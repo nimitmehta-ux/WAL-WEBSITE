@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Features - Smart Library</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        nav {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+        }
+
+        nav a:hover {
+            background: rgba(255,255,255,0.2);
+        }
+
+        .page-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .page-header h1 {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+            margin-bottom: 4rem;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+            border-top: 4px solid #667eea;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.3);
+        }
+
+        .feature-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .feature-card h3 {
+            color: #764ba2;
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+        }
+
+        .feature-card p {
+            color: #666;
+            margin-bottom: 1.5rem;
+            font-size: 1.05rem;
+        }
+
+        .feature-card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .feature-card ul li {
+            margin: 0.8rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            color: #555;
+        }
+
+        .feature-card ul li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #667eea;
+            font-weight: bold;
+        }
+
+        .advantages-section {
+            background: #f8f9fa;
+            padding: 4rem 2rem;
+            margin: 4rem -2rem;
+        }
+
+        .advantages-section h2 {
+            color: #667eea;
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .advantages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .advantage-item {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .advantage-item h4 {
+            color: #764ba2;
+            margin: 1rem 0;
+            font-size: 1.3rem;
+        }
+
+        .tech-stack {
+            margin: 4rem 0;
+        }
+
+        .tech-stack h2 {
+            color: #667eea;
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .tech-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .tech-card:hover {
+            transform: scale(1.05);
+        }
+
+        .tech-card h4 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+
+        @media (max-width: 768px) {
+            .page-header h1 {
+                font-size: 2rem;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="books.html">Books Catalog</a></li>
+            <li><a href="features.html">Features</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="page-header">
+        <h1>✨ System Features</h1>
+        <p>Comprehensive features designed for modern library management</p>
+    </div>
+
+    <div class="container">
+        <div class="features-grid">
+            <div class="feature-card">
+                <span class="feature-icon">📖</span>
+                <h3>Book Management</h3>
+                <p>Complete control over your library's book collection with powerful management tools.</p>
+                <ul>
+                    <li>Add new books with complete details</li>
+                    <li>Update existing book information</li>
+                    <li>Delete outdated or damaged books</li>
+                    <li>Track Book ID, Title, Author, Category</li>
+                    <li>Monitor Publisher and Edition details</li>
+                    <li>Real-time availability status</li>
+                    <li>Bulk upload functionality</li>
+                </ul>
+            </div>
+
+            <div class="feature-card">
+                <span class="feature-icon">👥</span>
+                <h3>User Management</h3>
+                <p>Efficiently manage all library members and their activities in one centralized system.</p>
+                <ul>
+                    <li>Create student and staff accounts</li>
+                    <li>Store User ID, Name, Email details</li>
+                    <li>Manage different membership types</li>
+                    <li>Track books issued to each user</li>
+                    <li>View complete borrowing history</li>
+                    <li>Set borrowing limits per user</li>
+                    <li>User activity logs and reports</li>
+                </ul>
+            </div>
+
+            <div class="feature-card">
+                <span class="feature-icon">🔍</span>
+                <h3>Search & Filter</h3>
+                <p>Lightning-fast search capabilities to find exactly what you're looking for instantly.</p>
+                <ul>
+                    <li>Search books by title</li>
+                    <li>Find books by author name</li>
+                    <li>Browse by category/genre</li>
+                    <li>Filter by availability status</li>
+                    <li>Advanced multi-criteria search</li>
+                    <li>Sort results by various parameters</li>
+                    <li>Save favorite searches</li>
+                </ul>
+            </div>
+
+            <div class="feature-card">
+                <span class="feature-icon">📅</span>
+                <h3>Issue & Return System</h3>
+                <p>Streamlined book circulation with automated tracking and notifications.</p>
+                <ul>
+                    <li>Quick book issue process</li>
+                    <li>Automatic due date calculation</li>
+                    <li>Easy return processing</li>
+                    <li>Late return detection</li>
+                    <li>Fine calculation system</li>
+                    <li>Renewal options</li>
+                    <li>Email/SMS reminders</li>
+                </ul>
+            </div>
+
+            <div class="feature-card">
+                <span class="feature-icon">💾</span>
+                <h3>Digital Records</h3>
+                <p>Paperless library operations with secure cloud-based record keeping.</p>
+                <ul>
+                    <li>Complete digital database</li>
+                    <li>Full borrowing history</li>
+                    <li>Eliminate paper registers</li>
+                    <li>Easy data backup and recovery</li>
+                    <li>Quick information retrieval</li>
+                    <li>Generate comprehensive reports</li>
+                    <li>Export data in multiple formats</li>
+                </ul>
+            </div>
+
+            <div class="feature-card">
+                <span class="feature-icon">📧</span>
+                <h3>Feedback & Communication</h3>
+                <p>Stay connected with users through integrated communication tools.</p>
+                <ul>
+                    <li>Collect user feedback</li>
+                    <li>Handle suggestions and complaints</li>
+                    <li>Display staff contact details</li>
+                    <li>Send announcements</li>
+                    <li>Newsletter system</li>
+                    <li>Help desk integration</li>
+                    <li>Rating and review system</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="tech-stack">
+            <h2>Technologies Used</h2>
+            <div class="tech-grid">
+                <div class="tech-card">
+                    <h4>HTML5</h4>
+                    <p>Structure & Semantics</p>
+                </div>
+                <div class="tech-card">
+                    <h4>CSS3</h4>
+                    <p>Styling & Layout</p>
+                </div>
+                <div class="tech-card">
+                    <h4>JavaScript</h4>
+                    <p>Interactivity & Validation</p>
+                </div>
+                <div class="tech-card">
+                    <h4>MySQL</h4>
+                    <p>Database Management</p>
+                </div>
+                <div class="tech-card">
+                    <h4>PHP/Python</h4>
+                    <p>Backend Processing</p>
+                </div>
+                <div class="tech-card">
+                    <h4>Bootstrap</h4>
+                    <p>Responsive Design</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="advantages-section">
+        <h2>System Advantages</h2>
+        <div class="advantages-grid">
+            <div class="advantage-item">
+                <span style="font-size: 3rem;">⚡</span>
+                <h4>Time Saving</h4>
+                <p>Automate repetitive tasks and save valuable staff time</p>
+            </div>
+            <div class="advantage-item">
+                <span style="font-size: 3rem;">✅</span>
+                <h4>Error Reduction</h4>
+                <p>Minimize human errors in data entry and record keeping</p>
+            </div>
+            <div class="advantage-item">
+                <span style="font-size: 3rem;">🎯</span>
+                <h4>Easy Management</h4>
+                <p>Intuitive interface for effortless library operations</p>
+            </div>
+            <div class="advantage-item">
+                <span style="font-size: 3rem;">🔒</span>
+                <h4>Data Security</h4>
+                <p>Secure centralized storage with backup options</p>
+            </div>
+            <div class="advantage-item">
+                <span style="font-size: 3rem;">📊</span>
+                <h4>Better Insights</h4>
+                <p>Generate reports and analytics for informed decisions</p>
+            </div>
+            <div class="advantage-item">
+                <span style="font-size: 3rem;">🌐</span>
+                <h4>Accessibility</h4>
+                <p>Access from anywhere with internet connectivity</p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Smart Library Management System. All rights reserved.</p>
+    </footer>
+</body>
+</html>

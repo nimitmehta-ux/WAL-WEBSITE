@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Books Catalog - Smart Library</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f8f9fa;
+        }
+
+        nav {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+        }
+
+        nav a:hover {
+            background: rgba(255,255,255,0.2);
+        }
+
+        .page-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .page-header h1 {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        .search-filter-section {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+        }
+
+        .search-box {
+            margin-bottom: 1.5rem;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #667eea;
+            border-radius: 50px;
+            font-size: 1rem;
+            outline: none;
+            transition: all 0.3s;
+        }
+
+        .search-box input:focus {
+            box-shadow: 0 0 20px rgba(102, 126, 234, 0.3);
+        }
+
+        .filters {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .filter-group {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .filter-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #667eea;
+            font-weight: 600;
+        }
+
+        .filter-group select {
+            width: 100%;
+            padding: 0.8rem;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            outline: none;
+            transition: all 0.3s;
+        }
+
+        .filter-group select:focus {
+            border-color: #667eea;
+        }
+
+        .table-container {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        thead {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        th {
+            padding: 1.2rem;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        td {
+            padding: 1rem 1.2rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        tbody tr {
+            transition: all 0.3s;
+        }
+
+        tbody tr:hover {
+            background: #f8f9fa;
+            transform: scale(1.01);
+        }
+
+        .available {
+            color: #28a745;
+            font-weight: 600;
+            background: #d4edda;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            display: inline-block;
+        }
+
+        .issued {
+            color: #dc3545;
+            font-weight: 600;
+            background: #f8d7da;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            display: inline-block;
+        }
+
+        .action-btn {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .action-btn:hover {
+            background: #764ba2;
+            transform: translateY(-2px);
+        }
+
+        .stats-bar {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .stat-card h3 {
+            font-size: 2rem;
+            color: #667eea;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-card p {
+            color: #666;
+        }
+
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+
+        @media (max-width: 768px) {
+            .page-header h1 {
+                font-size: 2rem;
+            }
+            
+            table {
+                font-size: 0.9rem;
+            }
+            
+            th, td {
+                padding: 0.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="books.html">Books Catalog</a></li>
+            <li><a href="features.html">Features</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="page-header">
+        <h1>📖 Books Catalog</h1>
+        <p>Browse our extensive collection of books across various categories</p>
+    </div>
+
+    <div class="container">
+        <div class="stats-bar">
+            <div class="stat-card">
+                <h3>5,234</h3>
+                <p>Total Books</p>
+            </div>
+            <div class="stat-card">
+                <h3>4,856</h3>
+                <p>Available</p>
+            </div>
+            <div class="stat-card">
+                <h3>378</h3>
+                <p>Issued</p>
+            </div>
+            <div class="stat-card">
+                <h3>52</h3>
+                <p>Categories</p>
+            </div>
+        </div>
+
+        <div class="search-filter-section">
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="🔍 Search by Book ID, Title, Author, or Publisher..." onkeyup="searchBooks()">
+            </div>
+            <div class="filters">
+                <div class="filter-group">
+                    <label>Category</label>
+                    <select id="categoryFilter" onchange="filterBooks()">
+                        <option value="">All Categories</option>
+                        <option value="Computer Science">Computer Science</option>
+                        <option value="Programming">Programming</option>
+                        <option value="Fiction">Fiction</option>
+                        <option value="Physics">Physics</option>
+                        <option value="Data Science">Data Science</option>
+                        <option value="Classic Literature">Classic Literature</option>
+                        <option value="Chemistry">Chemistry</option>
+                        <option value="Mathematics">Mathematics</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label>Availability Status</label>
+                    <select id="statusFilter" onchange="filterBooks()">
+                        <option value="">All Status</option>
+                        <option value="Available">Available</option>
+                        <option value="Issued">Issued</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="table-container">
+            <table id="booksTable">
+                <thead>
+                    <tr>
+                        <th>Book ID</th>
+                        <th>Title</th>
+                        <th>Author</th>
+                        <th>Category</th>
+                        <th>Publisher</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>B001</td>
+                        <td>Introduction to Algorithms</td>
+                        <td>Thomas H. Cormen</td>
+                        <td>Computer Science</td>
+                        <td>MIT Press</td>
+                        <td><span class="available">Available</span></td>
+                        <td><button class="action-btn" onclick="viewDetails('B001')">View Details</button></td>
+                    </tr>
+                    <tr>
+                        <td>B002</td>
+                        <td>Clean Code</td>
+                        <td>Robert C. Martin</td>
+                        <td>Programming</td>
+                        <td>Prentice Hall</td>
+                        <td><span class="issued">Issued</span></td>
+                        <td><button class="action-btn" onclick="viewDetails('B002')">View Details</button></td>
+                    </tr>
+                    <tr>
+                        <td>B003</td>
+                        <td>The Great Gatsby</td>
+                        <td>F. Scott Fitzgerald</td>
+                        <td>Fiction</td>
+                        <td>Scribner</td>
+                        <td><span class="available">Available</span></td>
+                        <td><button class="action-btn" onclick="viewDetails('B003')">View Details</button></td>
+                    </tr>
+                    <tr>
+                        <td>B004</td>
+                        <td>Physics for Scientists</td>
+                        <td>Raymond A. Serway</td>
+                        <td>Physics</td>
+                        <td>Brooks Cole</td>
+                        <td><span class="available">Available</span></td>
+                        <td><button class="action-btn" onclick="viewDetails('B004')">View Details</button></td>
+                    </tr>
+                    <tr>
+                        <td>B005</td>
+                        <td>Data Science Handbook</td>
+                        <td>Jake VanderPlas</td>
+                        <td>Data Science</td>
+                        <td>O'Reilly</td>
+                        <td><span class="issued">Issued</span></td>
+                        <td><button class="action-btn" onclick="viewDetails('B005')">View Details</button></td>
+                    </tr>
+                    <tr>
+                        <td>B006</td>
+                        <td>Pride and Prejudice</td>
+                        <td>Jane Austen</td>
+                        <td>Classic Literature</td>
+                        <td>Penguin Classics</td>
+                        <td><span class="available">Available</span></td>
+                        <td><button class="action-btn" onclick="viewDetails('B006')">View Details</button></td>
+                    </tr>
+                    <tr>
+                        <td>B007</td>
+                        <td>Artificial Intelligence</td>
+                        <td>Stuart Russell</td>
+                        <td>Computer Science</td>
+                        <td>Pearson</td>
+                        <td><span class="available">Available</span></td>
+                        <td><button class="action-btn" onclick="viewDetails('B007')">View Details</button></td>
+                    </tr>
+                    <tr>
+                        <td>B008</td>
+                        <td>Organic Chemistry</td>
+                        <td>Paula Bruice</td>
+                        <td>Chemistry</td>
+                        <td>Pearson</td>
+                        <td><span class="issued">Issued</span></td>
+                        <td><button class="action-btn" onclick="viewDetails('B008')">View Details</button></td>
+                    </tr>
+                    <tr>
+                        <td>B009</td>
+                        <td>Calculus Early Transcendentals</td>
+                        <td>James Stewart</td>
+                        <td>Mathematics</td>
+                        <td>Cengage Learning</td>
+                        <td><span class="available">Available</span></td>
+                        <td><button class="action-btn" onclick="viewDetails('B009')">View Details</button></td>
+                    </tr>
+                    <tr>
+                        <td>B010</td>
+                        <td>Design Patterns</td>
+                        <td>Erich Gamma</td>
+                        <td>Programming</td>
+                        <td>Addison-Wesley</td>
+                        <td><span class="available">Available</span></td>
+                        <td><button class="action-btn" onclick="viewDetails('B010')">View Details</button></td>
+                    </tr>
+                    <tr>
+                        <td>B011</td>
+                        <td>To Kill a Mockingbird</td>
+                        <td>Harper Lee</td>
+                        <td>Fiction</td>
+                        <td>J.B. Lippincott</td>
+                        <td><span class="issued">Issued</span></td>
+                        <td><button class="action-btn" onclick="viewDetails('B011')">View Details</button></td>
+                    </tr>
+                    <tr>
+                        <td>B012</td>
+                        <td>Machine Learning</td>
+                        <td>Tom Mitchell</td>
+                        <td>Data Science</td>
+                        <td>McGraw-Hill</td>
+                        <td><span class="available">Available</span></td>
+                        <td><button class="action-btn" onclick="viewDetails('B012')">View Details</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Smart Library Management System. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function searchBooks() {
+            const input = document.getElementById('searchInput');
+            const filter = input.value.toLowerCase();
+            const table = document.getElementById('booksTable');
+            const rows = table.getElementsByTagName('tr');
+
+            for (let i = 1; i < rows.length; i++) {
+                const cells = rows[i].getElementsByTagName('td');
+                let found = false;
+
+                for (let j = 0; j < cells.length - 1; j++) {
+                    if (cells[j].textContent.toLowerCase().includes(filter)) {
+                        found = true;
+                        break;
+                    }
+                }
+
+                rows[i].style.display = found ? '' : 'none';
+            }
+        }
+
+        function filterBooks() {
+            const categoryFilter = document.getElementById('categoryFilter').value;
+            const statusFilter = document.getElementById('statusFilter').value;
+            const table = document.getElementById('booksTable');
+            const rows = table.getElementsByTagName('tr');
+
+            for (let i = 1; i < rows.length; i++) {
+                const cells = rows[i].getElementsByTagName('td');
+                const category = cells[3].textContent;
+                const status = cells[5].textContent.trim();
+
+                let showRow = true;
+
+                if (categoryFilter && category !== categoryFilter) {
+                    showRow = false;
+                }
+
+                if (statusFilter && status !== statusFilter) {
+                    showRow = false;
+                }
+
+                rows[i].style.display = showRow ? '' : 'none';
+            }
+        }
+
+        function viewDetails(bookId) {
+            alert(`Viewing details for Book ID: ${bookId}\n\nThis feature will show complete book information including:\n- Full Description\n- ISBN Number\n- Edition\n- Number of Pages\n- Available Copies\n- Issue History`);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Library - Home</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        nav {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+        }
+
+        nav a:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-2px);
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 5rem 2rem;
+            text-align: center;
+            min-height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            animation: fadeInDown 1s;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            animation: fadeInUp 1s;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+
+        .cta-btn {
+            background: white;
+            color: #667eea;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .cta-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+        }
+
+        .cta-btn.secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .cta-btn.secondary:hover {
+            background: white;
+            color: #667eea;
+        }
+
+        .intro-section {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .intro-section h2 {
+            color: #667eea;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .intro-section p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            color: #555;
+        }
+
+        .highlights {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .highlight-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+        }
+
+        .highlight-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+        }
+
+        .highlight-card h3 {
+            color: #764ba2;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .stats {
+            background: #f8f9fa;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .stat-box {
+            padding: 2rem;
+        }
+
+        .stat-box h3 {
+            font-size: 3rem;
+            color: #667eea;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-box p {
+            color: #666;
+            font-size: 1.1rem;
+        }
+
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            nav ul {
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="books.html">Books Catalog</a></li>
+            <li><a href="features.html">Features</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="hero">
+        <h1>📚 Smart Library Management System</h1>
+        <p>Your gateway to efficient digital library management. Automate operations, reduce errors, and enhance the learning experience with our modern library system.</p>
+        <div class="cta-buttons">
+            <a href="books.html" class="cta-btn">Browse Books</a>
+            <a href="about.html" class="cta-btn secondary">Learn More</a>
+        </div>
+    </div>
+
+    <div class="intro-section">
+        <h2>Welcome to the Future of Library Management</h2>
+        <p>Our Smart Library Management System revolutionizes the way libraries operate, bringing efficiency, accuracy, and ease of use to library staff and users alike.</p>
+        <p>Say goodbye to manual registers and hello to automated, streamlined library operations that save time and reduce errors.</p>
+
+        <div class="highlights">
+            <div class="highlight-card">
+                <h3>⚡ Fast & Efficient</h3>
+                <p>Quick book searches, instant issue/return processing, and real-time availability updates.</p>
+            </div>
+            <div class="highlight-card">
+                <h3>🔒 Secure & Reliable</h3>
+                <p>Secure data storage with complete borrowing history and user activity logs.</p>
+            </div>
+            <div class="highlight-card">
+                <h3>🎯 User-Friendly</h3>
+                <p>Intuitive interface designed for both librarians and library members.</p>
+            </div>
+            <div class="highlight-card">
+                <h3>📱 Modern Design</h3>
+                <p>Responsive design that works seamlessly on all devices - desktop, tablet, and mobile.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="stats">
+        <h2 style="color: #667eea; font-size: 2.5rem; margin-bottom: 3rem;">Library Statistics</h2>
+        <div class="stats-container">
+            <div class="stat-box">
+                <h3>5000+</h3>
+                <p>Books Available</p>
+            </div>
+            <div class="stat-box">
+                <h3>1200+</h3>
+                <p>Active Members</p>
+            </div>
+            <div class="stat-box">
+                <h3>50+</h3>
+                <p>Categories</p>
+            </div>
+            <div class="stat-box">
+                <h3>99%</h3>
+                <p>Satisfaction Rate</p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Smart Library Management System. All rights reserved.</p>
+        <p>Empowering education through digital transformation</p>
+    </footer>
+</body>
+</html>
+
+<!-- ABOUT PAGE (about.html) -->
+<!-- Save this as a separate file -->
+<!--
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - Smart Library</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        nav {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+        }
+
+        nav a:hover {
+            background: rgba(255,255,255,0.2);
+        }
+
+        .page-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .page-header h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .about-content {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .about-content h2 {
+            color: #667eea;
+            font-size: 2rem;
+            margin: 3rem 0 1.5rem;
+        }
+
+        .about-content p {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            color: #555;
+        }
+
+        .objectives {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 10px;
+            margin: 2rem 0;
+        }
+
+        .objectives ul {
+            list-style-position: inside;
+            margin-top: 1rem;
+        }
+
+        .objectives li {
+            margin: 0.8rem 0;
+            font-size: 1.1rem;
+        }
+
+        .rules-box {
+            background: white;
+            padding: 2rem;
+            border-left: 4px solid #667eea;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin: 2rem 0;
+        }
+
+        .rules-box ul {
+            margin-top: 1rem;
+        }
+
+        .rules-box li {
+            margin: 0.8rem 0;
+            padding-left: 1.5rem;
+        }
+
+        .hours-box {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .hour-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .hour-card h3 {
+            margin-bottom: 1rem;
+        }
+
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="books.html">Books Catalog</a></li>
+            <li><a href="features.html">Features</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="page-header">
+        <h1>About Our Library</h1>
+        <p>Discover our mission, values, and commitment to excellence</p>
+    </div>
+
+    <div class="about-content">
+        <p>Welcome to the Smart Library Management System - a cutting-edge digital solution designed to transform traditional library operations into a modern, efficient, and user-friendly experience.</p>
+
+        <p>Our system bridges the gap between conventional library management and the digital age, providing an automated platform that enhances accessibility, reduces manual errors, and streamlines administrative tasks.</p>
+
+        <h2>Our Mission</h2>
+        <p>To empower educational institutions with innovative library management solutions that foster learning, research, and knowledge sharing through technology-driven efficiency.</p>
+
+        <div class="objectives">
+            <h3 style="color: #667eea; margin-bottom: 1rem;">Objectives of the System</h3>
+            <ul>
+                <li>Automate library activities and reduce manual workload</li>
+                <li>Minimize human errors in record-keeping</li>
+                <li>Provide quick and easy access to book information</li>
+                <li>Improve user experience for students and staff</li>
+                <li>Efficiently manage large collections of books and resources</li>
+                <li>Generate comprehensive reports and analytics</li>
+                <li>Support digital transformation in education</li>
+            </ul>
+        </div>
+
+        <h2>Library Rules & Regulations</h2>
+        <div class="rules-box">
+            <ul>
+                <li>📖 Books can be issued for a maximum of 14 days</li>
+                <li>⚠️ Late returns will incur a fine of ₹5 per day</li>
+                <li>📚 Maximum 3 books can be issued per member at a time</li>
+                <li>💔 Damaged or lost books must be replaced or paid for</li>
+                <li>🤫 Maintain silence in the library premises</li>
+                <li>📱 Mobile phones must be on silent mode</li>
+                <li>🍔 No food or drinks allowed inside the library</li>
+                <li>👥 Treat library staff and fellow members with respect</li>
+                <li>🎒 Bags must be deposited at the designated counter</li>
+                <li>✅ Return books on or before the due date</li>
+            </ul>
+        </div>
+
+        <h2>Working Hours</h2>
+        <div class="hours-box">
+            <div class="hour-card">
+                <h3>Weekdays</h3>
+                <p><strong>Monday - Friday</strong></p>
+                <p>9:00 AM - 6:00 PM</p>
+            </div>
+            <div class="hour-card">
+                <h3>Saturday</h3>
+                <p><strong>Half Day</strong></p>
+                <p>9:00 AM - 2:00 PM</p>
+            </div>
+            <div class="hour-card">
+                <h3>Sunday</h3>
+                <p><strong>Closed</strong></p>
+                <p>Weekly Off</p>
+            </div>
+        </div>
+
+        <h2>Why Choose Us?</h2>
+        <p>Our Smart Library Management System stands out with its intuitive interface, robust functionality, and commitment to continuous improvement. We prioritize user satisfaction and operational efficiency, ensuring that every interaction with our system is smooth and productive.</p>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Smart Library Management System. All rights reserved.</p>
+    </footer>
+</body>
+</html>
+-->

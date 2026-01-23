@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - Smart Library</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        nav {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+        }
+
+        nav a:hover {
+            background: rgba(255,255,255,0.2);
+        }
+
+        .page-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .page-header h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .about-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .intro-section {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .intro-section p {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            color: #555;
+            line-height: 1.8;
+        }
+
+        .section-title {
+            color: #667eea;
+            font-size: 2.5rem;
+            margin: 4rem 0 2rem;
+            text-align: center;
+        }
+
+        .mission-vision {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin: 3rem 0;
+        }
+
+        .mv-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            border-top: 4px solid #667eea;
+        }
+
+        .mv-card h3 {
+            color: #764ba2;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .mv-card p {
+            font-size: 1.1rem;
+            color: #666;
+            line-height: 1.8;
+        }
+
+        .objectives {
+            background: #f8f9fa;
+            padding: 3rem;
+            border-radius: 15px;
+            margin: 3rem 0;
+        }
+
+        .objectives h3 {
+            color: #667eea;
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .objectives-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .objective-item {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            display: flex;
+            align-items: start;
+            gap: 1rem;
+            transition: all 0.3s;
+        }
+
+        .objective-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.2);
+        }
+
+        .objective-icon {
+            font-size: 2rem;
+            flex-shrink: 0;
+        }
+
+        .objective-text {
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .rules-section {
+            margin: 4rem 0;
+        }
+
+        .rules-box {
+            background: white;
+            padding: 3rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            border-left: 6px solid #667eea;
+        }
+
+        .rules-box h3 {
+            color: #764ba2;
+            font-size: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .rules-list {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .rule-item {
+            display: flex;
+            align-items: start;
+            gap: 1rem;
+            padding: 1rem;
+            background: #f8f9fa;
+            border-radius: 10px;
+        }
+
+        .rule-icon {
+            font-size: 1.8rem;
+            flex-shrink: 0;
+        }
+
+        .rule-text {
+            color: #555;
+            font-size: 1.05rem;
+        }
+
+        .hours-section {
+            margin: 4rem 0;
+        }
+
+        .hours-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .hour-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2.5rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+        }
+
+        .hour-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.4);
+        }
+
+        .hour-card h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .hour-card .day {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .hour-card .time {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .why-choose {
+            background: #f8f9fa;
+            padding: 3rem;
+            border-radius: 15px;
+            margin: 4rem 0;
+        }
+
+        .why-choose h3 {
+            color: #667eea;
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .why-choose p {
+            font-size: 1.1rem;
+            color: #555;
+            line-height: 1.8;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .value-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+        }
+
+        .value-card .icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .value-card h4 {
+            color: #764ba2;
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .value-card p {
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+
+        @media (max-width: 768px) {
+            .page-header h1 {
+                font-size: 2rem;
+            }
+            
+            .mission-vision {
+                grid-template-columns: 1fr;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="books.html">Books Catalog</a></li>
+            <li><a href="features.html">Features</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="page-header">
+        <h1>ℹ️ About Our Library</h1>
+        <p>Discover our mission, values, and commitment to excellence in library management</p>
+    </div>
+
+    <div class="about-content">
+        <div class="intro-section">
+            <p>Welcome to the Smart Library Management System - a cutting-edge digital solution designed to transform traditional library operations into a modern, efficient, and user-friendly experience.</p>
+            <p>Our system bridges the gap between conventional library management and the digital age, providing an automated platform that enhances accessibility, reduces manual errors, and streamlines administrative tasks for educational institutions worldwide.</p>
+        </div>
+
+        <div class="mission-vision">
+            <div class="mv-card">
+                <h3><span>🎯</span> Our Mission</h3>
+                <p>To empower educational institutions with innovative library management solutions that foster learning, research, and knowledge sharing through technology-driven efficiency. We strive to make library resources accessible to all, while maintaining the highest standards of service excellence.</p>
+            </div>
+            <div class="mv-card">
+                <h3><span>👁️</span> Our Vision</h3>
+                <p>To become the leading smart library management platform that revolutionizes how libraries operate globally, creating seamless experiences for librarians and users while promoting a culture of continuous learning and digital transformation in education.</p>
+            </div>
+        </div>
+
+        <h2 class="section-title">System Objectives</h2>
+        <div class="objectives">
+            <h3>What We Aim to Achieve</h3>
+            <div class="objectives-grid">
+                <div class="objective-item">
+                    <span class="objective-icon">⚡</span>
+                    <span class="objective-text">Automate library activities and reduce manual workload significantly</span>
+                </div>
+                <div class="objective-item">
+                    <span class="objective-icon">✅</span>
+                    <span class="objective-text">Minimize human errors in record-keeping and data management</span>
+                </div>
+                <div class="objective-item">
+                    <span class="objective-icon">🔍</span>
+                    <span class="objective-text">Provide quick and easy access to book information and resources</span>
+                </div>
+                <div class="objective-item">
+                    <span class="objective-icon">😊</span>
+                    <span class="objective-text">Improve overall user experience for students and staff members</span>
+                </div>
+                <div class="objective-item">
+                    <span class="objective-icon">📚</span>
+                    <span class="objective-text">Efficiently manage large collections of books and digital resources</span>
+                </div>
+                <div class="objective-item">
+                    <span class="objective-icon">📊</span>
+                    <span class="objective-text">Generate comprehensive reports and analytics for better decision-making</span>
+                </div>
+                <div class="objective-item">
+                    <span class="objective-icon">🌐</span>
+                    <span class="objective-text">Support digital transformation in education through modern technology</span>
+                </div>
+                <div class="objective-item">
+                    <span class="objective-icon">🔒</span>
+                    <span class="objective-text">Ensure data security and maintain user privacy at all times</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="rules-section">
+            <h2 class="section-title">Library Rules & Regulations</h2>
+            <div class="rules-box">
+                <h3>Guidelines for All Members</h3>
+                <div class="rules-list">
+                    <div class="rule-item">
+                        <span class="rule-icon">📖</span>
+                        <span class="rule-text">Books can be issued for a maximum period of 14 days from the date of issue</span>
+                    </div>
+                    <div class="rule-item">
+                        <span class="rule-icon">⚠️</span>
+                        <span class="rule-text">Late returns will incur a fine of ₹5 per day for each overdue book</span>
+                    </div>
+                    <div class="rule-item">
+                        <span class="rule-icon">📚</span>
+                        <span class="rule-text">Maximum 3 books can be issued per member at any given time</span>
+                    </div>
+                    <div class="rule-item">
+                        <span class="rule-icon">💔</span>
+                        <span class="rule-text">Damaged or lost books must be replaced with a new copy or paid for at current market price</span>
+                    </div>
+                    <div class="rule-item">
+                        <span class="rule-icon">🤫</span>
+                        <span class="rule-text">Maintain complete silence in the library premises to respect other readers</span>
+                    </div>
+                    <div class="rule-item">
+                        <span class="rule-icon">📱</span>
+                        <span class="rule-text">Mobile phones must be kept on silent mode or switched off inside the library</span>
+                    </div>
+                    <div class="rule-item">
+                        <span class="rule-icon">🍔</span>
+                        <span class="rule-text">No food or drinks are allowed inside the library to maintain cleanliness</span>
+                    </div>
+                    <div class="rule-item">
+                        <span class="rule-icon">👥</span>
+                        <span class="rule-text">Treat library staff and fellow members with courtesy and respect</span>
+                    </div>
+                    <div class="rule-item">
+                        <span class="rule-icon">🎒</span>
+                        <span class="rule-text">Personal bags must be deposited at the designated counter before entering</span>
+                    </div>
+                    <div class="rule-item">
+                        <span class="rule-icon">✅</span>
+                        <span class="rule-text">Always return books on or before the due date to avoid penalties</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="hours-section">
+            <h2 class="section-title">Working Hours</h2>
+            <div class="hours-grid">
+                <div class="hour-card">
+                    <h3>🗓️</h3>
+                    <p class="day">Monday - Friday</p>
+                    <p class="time">9:00 AM - 6:00 PM</p>
+                </div>
+                <div class="hour-card">
+                    <h3>📅</h3>
+                    <p class="day">Saturday</p>
+                    <p class="time">9:00 AM - 2:00 PM</p>
+                </div>
+                <div class="hour-card">
+                    <h3>🔒</h3>
+                    <p class="day">Sunday</p>
+                    <p class="time">Closed</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="why-choose">
+            <h3>Why Choose Us?</h3>
+            <p>Our Smart Library Management System stands out with its intuitive interface, robust functionality, and commitment to continuous improvement. We prioritize user satisfaction and operational efficiency, ensuring that every interaction with our system is smooth, productive, and rewarding.</p>
+            
+            <div class="values-grid">
+                <div class="value-card">
+                    <div class="icon">💡</div>
+                    <h4>Innovation</h4>
+                    <p>Cutting-edge technology solutions</p>
+                </div>
+                <div class="value-card">
+                    <div class="icon">🎯</div>
+                    <h4>Excellence</h4>
+                    <p>Commitment to quality service</p>
+                </div>
+                <div class="value-card">
+                    <div class="icon">🤝</div>
+                    <h4>Reliability</h4>
+                    <p>Dependable and consistent performance</p>
+                </div>
+                <div class="value-card">
+                    <div class="icon">🌱</div>
+                    <h4>Growth</h4>
+                    <p>Continuous improvement mindset</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Smart Library Management System. All rights reserved.</p>
+    </footer>
+</body>
+</html>

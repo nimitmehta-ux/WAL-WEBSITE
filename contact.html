@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Smart Library</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f8f9fa;
+        }
+
+        nav {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+        }
+
+        nav a:hover {
+            background: rgba(255,255,255,0.2);
+        }
+
+        .page-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .page-header h1 {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 4rem;
+        }
+
+        .contact-form-section {
+            background: white;
+            padding: 3rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .contact-form-section h2 {
+            color: #667eea;
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #667eea;
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-family: inherit;
+            transition: all 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 10px rgba(102, 126, 234, 0.2);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1rem 2.5rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            transition: all 0.3s;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+        }
+
+        .contact-info-section {
+            background: white;
+            padding: 3rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .contact-info-section h2 {
+            color: #667eea;
+            margin-bottom: 2rem;
+            font-size: 2rem;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: start;
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: #f8f9fa;
+            border-radius: 10px;
+            transition: all 0.3s;
+        }
+
+        .info-item:hover {
+            background: #e9ecef;
+            transform: translateX(5px);
+        }
+
+        .info-icon {
+            font-size: 2rem;
+            margin-right: 1.5rem;
+            color: #667eea;
+        }
+
+        .info-content h3 {
+            color: #764ba2;
+            margin-bottom: 0.5rem;
+        }
+
+        .info-content p {
+            color: #666;
+            line-height: 1.8;
+        }
+
+        .staff-section {
+            margin-top: 4rem;
+        }
+
+        .staff-section h2 {
+            color: #667eea;
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .staff-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .staff-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .staff-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.3);
+        }
+
+        .staff-avatar {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 50%;
+            margin: 0 auto 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: white;
+        }
+
+        .staff-card h3 {
+            color: #764ba2;
+            margin-bottom: 0.5rem;
+            font-size: 1.5rem;
+        }
+
+        .staff-card p {
+            color: #666;
+            margin-bottom: 0.5rem;
+        }
+
+        .staff-card .role {
+            color: #667eea;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .map-section {
+            margin-top: 4rem;
+            background: white;
+            padding: 3rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .map-section h2 {
+            color: #667eea;
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .map-placeholder {
+            width: 100%;
+            height: 400px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+        }
+
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+
+        @media (max-width: 968px) {
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .page-header h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="books.html">Books Catalog</a></li>
+            <li><a href="features.html">Features</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="page-header">
+        <h1>📞 Contact Us</h1>
+        <p>We'd love to hear from you. Get in touch with us today!</p>
+    </div>
+
+    <div class="container">
+        <div class="contact-grid">
+            <div class="contact-form-section">
+                <h2>Send us a Message</h2>
+                <form onsubmit="handleSubmit(event)">
+                    <div class="form-group">
+                        <label for="name">Full Name *</label>
+                        <input type="text" id="name" required placeholder="Enter your full name">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address *</label>
+                        <input type="email" id="email" required placeholder="your.email@example.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" placeholder="+91 98765 43210">
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">Subject *</label>
+                        <select id="subject" required>
+                            <option value="">Select a subject</option>
+                            <option value="general">General Inquiry</option>
+                            <option value="membership">Membership</option>
+                            <option value="book-request">Book Request</option>
+                            <option value="feedback">Feedback</option>
+                            <option value="complaint">Complaint</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Your Message *</label>
+                        <textarea id="message" required placeholder="Write your message here..."></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Send Message</button>
+                </form>
+            </div>
+
+            <div class="contact-info-section">
+                <h2>Contact Information</h2>
+                
+                <div class="info-item">
+                    <div class="info-icon">📍</div>
+                    <div class="info-content">
+                        <h3>Address</h3>
+                        <p>Smart Library Management System<br>
+                        123 Education Street<br>
+                        Knowledge City, State - 560001<br>
+                        India</p>
+                    </div>
+                </div>
+
+                <div class="info-item">
+                    <div class="info-icon">📞</div>
+                    <div class="info-content">
+                        <h3>Phone</h3>
+                        <p>Main: +91 98765 43210<br>
+                        Helpdesk: +91 98765 43211<br>
+                        Toll Free: 1800 123 4567</p>
+                    </div>
+                </div>
+
+                <div class="info-item">
+                    <div class="info-icon">📧</div>
+                    <div class="info-content">
+                        <h3>Email</h3>
+                        <p>General: library@smartlibrary.edu<br>
+                        Support: support@smartlibrary.edu<br>
+                        Admin: admin@smartlibrary.edu</p>
+                    </div>
+                </div>
+
+                <div class="info-item">
+                    <div class="info-icon">🕐</div>
+                    <div class="info-content">
+                        <h3>Working Hours</h3>
+                        <p>Monday - Friday: 9:00 AM - 6:00 PM<br>
+                        Saturday: 9:00 AM - 2:00 PM<br>
+                        Sunday: Closed</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="staff-section">
+            <h2>Meet Our Library Team</h2>
+            <div class="staff-grid">
+                <div class="staff-card">
+                    <div class="staff-avatar">👨‍💼</div>
+                    <h3>Dr. Rajesh Kumar</h3>
+                    <p class="role">Chief Librarian</p>
+                    <p>📧 rajesh.kumar@smartlibrary.edu</p>
+                    <p>📞 +91 98765 43220</p>
+                </div>
+
+                <div class="staff-card">
+                    <div class="staff-avatar">👩‍💼</div>
+                    <h3>Ms. Priya Sharma</h3>
+                    <p class="role">Assistant Librarian</p>
+                    <p>📧 priya.sharma@smartlibrary.edu</p>
+                    <p>📞 +91 98765 43221</p>
+                </div>
+
+                <div class="staff-card">
+                    <div class="staff-avatar">👨‍💻</div>
+                    <h3>Mr. Amit Patel</h3>
+                    <p class="role">Technical Support</p>
+                    <p>📧 amit.patel@smartlibrary.edu</p>
+                    <p>📞 +91 98765 43222</p>
+                </div>
+
+                <div class="staff-card">
+                    <div class="staff-avatar">👩‍💻</div>
+                    <h3>Ms. Sneha Reddy</h3>
+                    <p class="role">Catalog Manager</p>
+                    <p>📧 sneha.reddy@smartlibrary.edu</p>
+                    <p>📞 +91 98765 43223</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="map-section">
+            <h2>Find Us on Map</h2>
+            <div class="map-placeholder">
+                <p>📍 Library Location Map<br>
+                <small style="font-size: 1rem; margin-top: 1rem; display: block;">123 Education Street, Knowledge City - 560001</small></p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Smart Library Management System. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function handleSubmit(event) {
+            event.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const subject = document.getElementById('subject').value;
+            const message = document.getElementById('message').value;
+
+            alert(`Thank you, ${name}!\n\nYour message has been received successfully.\n\nSubject: ${subject}\n\nWe will get back to you at ${email} within 24-48 hours.\n\nReference ID: SL${Date.now()}`);
+            
+            // Clear form
+            document.getElementById('name').value = '';
+            document.getElementById('email').value = '';
+            document.getElementById('phone').value = '';
+            document.getElementById('subject').value = '';
+            document.getElementById('message').value = '';
+        }
+    </script>
+</body>
+</html>
